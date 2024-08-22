@@ -1,5 +1,17 @@
 #include <stdio.h>
 #include <assert.h>
+void captureOutput(void (*func)(), char* output) {
+    // Redirect stdout to a buffer
+    freopen("/tmp/output.txt", "w", stdout);
+    func();
+    fflush(stdout);
+    freopen("/dev/tty", "w", stdout);
+    
+    // Read the buffer into the output variable
+    FILE* file = fopen("/tmp/output.txt", "r");
+    fread(output, sizeof(char), 1024, file);
+    fclose(file);
+}
 
 int printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
