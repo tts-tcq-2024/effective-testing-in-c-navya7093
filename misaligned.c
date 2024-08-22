@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
+
 void captureOutput(void (*func)(), char* output) {
     // Redirect stdout to a buffer
     freopen("/tmp/output.txt", "w", stdout);
