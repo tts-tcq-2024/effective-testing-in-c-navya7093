@@ -29,7 +29,7 @@ int printColorMap() {
 
 int main() {
     char output[1024] = {0};
-    captureOutput(int (*printColorMap)(), output);
+    captureOutput(printColorMap, output);
 
     const char* expectedOutput = 
         "1 | White | Blue\n2 | White | Orange\n3 | White | Green\n4 | White | Brown\n5 | White | Slate\n"
