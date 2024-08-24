@@ -24,8 +24,10 @@ void alertInCelcius(float farenheit) {
 }
 
 int main() {
-    alertInCelcius(400.5);
-    alertInCelcius(303.6);
+    alertInCelcius(400.5); // This should fail (500 return code)
+    alertInCelcius(303.6); // This should succeed (200 return code)
+    alertInCelcius(100.0); // This should succeed (200 return code)
+    assert(alertFailureCount == 1); // Expecting 1 failure
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
     return 0;
